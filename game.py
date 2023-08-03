@@ -1,6 +1,6 @@
 
-#This code was an existing idea from the Channel BroCode on youtube But i have quite made
-#a few changes and modifications to this code
+#This code was an existing idea from the Channel BroCode on youtube But i have made
+#quite a few changes and modifications to this code
 
 #tkintrer is a GUI library it has stuff like buttons frames and etc to show in the GUI
 from tkinter import *
