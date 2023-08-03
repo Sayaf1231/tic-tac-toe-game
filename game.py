@@ -34,6 +34,8 @@ board = [["-","-","-"],
 #has two players and when starts picks a random player between them
 playerList = ["player1" , "player2"]
 currentPlayer = random.choice(playerList)
+player1_win = 0
+player2_win = 0
 
 playerIcon = ["X", "O"]
 
@@ -42,7 +44,6 @@ assigned_icons = random.sample(playerIcon, 2)
 
 player1_icon = assigned_icons[0]
 player2_icon = assigned_icons[1]
-
 
 def game():
     #will start a new game when pressed the button
@@ -53,12 +54,29 @@ def game():
     for x in range(3):
         for y in range(3):
             board[x][y]["text"] = ""
+    return None
+    
+
+def refresh():
+    global player1_win
+    global player2_win
+
+    player1_win = 0
+    player2_win = 0
+
+    win_count_p1.config(text=("Player 1's Win count =" + str(player1_win)))
+    win_count_p2.config(text=("Player 2's Win count =" + str(player2_win)))
+
+    return None
+
     
 
 #the turn change or win decider
 def turn(x,y):
 
     global currentPlayer
+    global player1_win
+    global player2_win
 
     #checks if there are no players and there are no winners
     if (board[x][y]["text"] == "" and game_winner() is False):
@@ -75,8 +93,10 @@ def turn(x,y):
             #if winner exist end game 
             elif (game_winner() is True):
                 label.config(text= (playerList[0] +" is the winner"))
+                player1_win += 1
+                win_count_p1.config(text=("Player 1's Win count =" + str(player1_win)))
 
-            elif (game_winner() == "T"):
+            elif (game_winner() == "Tie"):
                 label.config(text="TIE GAME!!")
 
         else:
@@ -91,8 +111,10 @@ def turn(x,y):
 
             elif (game_winner() is True):
                 label.config(text= (playerList[1] +" is the winner"))
+                player2_win += 1
+                win_count_p2.config(text=("Player 2's Win count =" + str(player2_win)))
 
-            elif (game_winner() == "T"):
+            elif (game_winner() == "Tie"):
                 label.config(text="TIE GAME!!")
 
 #based on the conditions determine a winner/loser or tie game
@@ -131,7 +153,7 @@ def game_winner():
 
     #if there is a tie that means all the spaces need to be used
     elif(empty_space == 0):
-        return "T"
+        return "Tie"
     else:
         return False
 
@@ -145,9 +167,23 @@ window.title("Tic-Tac-Toe")
 label = Label(text= currentPlayer+"'s" + " turn", font=("",20))
 label.pack(side="top")
 
+#ScoreBoard
+count = Label(text="SCOREBOARD", font=("",11))
+count.pack(side="top",anchor="nw")
+
+#win counter
+win_count_p1 = Label(text= ("Player 1's Win count = " + str(player1_win)), font=("",9))
+win_count_p1.pack(side="top",anchor="nw")
+win_count_p2 = Label(text=("Player 2's Win count = " + str(player2_win)), font=("",9))
+win_count_p2.pack(side="top",anchor="nw")
+
 #game start and reset button
 game_start_but = Button(text="Restart", font=("",15), command= game)
 game_start_but.pack(side="top",anchor="ne")
+
+#refresh scoreboard count
+refresh_count = Button(text="Refresh Scoreboard", font=("",12),command=refresh)
+refresh_count.pack(side="top",anchor="ne")
 
 #container 
 frame = Frame(window)
