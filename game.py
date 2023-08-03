@@ -1,8 +1,8 @@
 
-#This code was an existing idea from the Channel BroCode in youtube But i have made
-#a few changes and modifications in this code
+#This code was an existing idea from the Channel BroCode on youtube But i have quite made
+#a few changes and modifications to this code
 
-#tkintrer is a GUi library it has stuff like buttons frames and etc to show in the GUI
+#tkintrer is a GUI library it has stuff like buttons frames and etc to show in the GUI
 from tkinter import *
 import random
 
@@ -15,9 +15,9 @@ import random
 
 #The player should have one move per turn and then switch
 
-#There should be a player win counter
+#There should be a player-win counter
 
-#A confirmation checking tie or win game
+#A confirmation checking tie or win the game
 
 
 
