@@ -3,8 +3,6 @@
 #quite a few changes and modifications to this code
 
 #tkintrer is a GUI library it has stuff like buttons frames and etc to show in the GUI
-from tkinter import *
-import random
 
 #I want a player vs player and player vs AI
 
@@ -18,15 +16,8 @@ import random
 #There should be a player-win counter
 
 #A confirmation checking tie or win the game
-
-
-
-
-
-
-
-
-
+from tkinter import *
+import random
 
 board = [["-","-","-"],
          ["-","-","-"],
